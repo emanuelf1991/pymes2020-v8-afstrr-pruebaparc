@@ -1,6 +1,6 @@
 <h3>{{Titulo}} <small>{{TituloAccionABMC[AccionABMC]}}</small></h3>
 
-Formulario Filtro de busqueda, se ve cuando la accion es Listado(busqueda/listado)
+ <!-- Formulario Filtro de busqueda, se ve cuando la accion es Listado(busqueda/listado) -->
 <form name="FormFiltro" [formGroup]='FormFiltro' class="bg-light" *ngIf="AccionABMC == 'L'" >
 	<div class="form-group row">
 		<label class="col-form-label col-sm-2 col-sm-offset-1">
@@ -21,7 +21,7 @@ Formulario Filtro de busqueda, se ve cuando la accion es Listado(busqueda/listad
 			</div>
 		</div>
 		<!-- Botones -->
-		<div class="row justify-content-center">
+		<div id="botonesAgregarConsultar" class="row justify-content-center">
 			<button type="button" class="btn btn-primary" (click)="Buscar()">
             <span class="fas fa-search"> </span> Consultar
         </button>
@@ -82,21 +82,21 @@ Formulario Filtro de busqueda, se ve cuando la accion es Listado(busqueda/listad
 <form name="FormReg" [formGroup]='FormReg' *ngIf="AccionABMC != 'L'" class="bg-light">
 
 	<fieldset [disabled]="AccionABMC==='C'">
-		<!--campo nombre-->
+		<!--campo descripcion-->
 		<div class="form-group row">
-			<label class="col-form-label col-sm-2 col-sm-offset-2" for="Nombre">Nombre <span
+			<label class="col-form-label col-sm-2 col-sm-offset-2" for="descripcion">Descripcion <span
                     class="text-danger">*</span></label>
 			<div class="col-sm-6">
-				<input type="text" class="form-control" formControlName="Nombre" 
-         [ngClass]="{'is-invalid': (FormReg.controls.Nombre.touched || submitted)  
-            && FormReg.controls.Nombre.errors}" />
+				<input type="text" class="form-control" formControlName="descripcion" 
+         [ngClass]="{'is-invalid': (FormReg.controls.descripcion.touched || submitted)  
+            && FormReg.controls.descripcion.errors}" />
 
-				<span class="text-danger" *ngIf="(FormReg.controls.Nombre.touched || submitted) 
-                        && FormReg.controls.Nombre.errors?.required">
+				<span class="text-danger" *ngIf="(FormReg.controls.descripcion.touched || submitted) 
+                        && FormReg.controls.descripcion.errors?.required">
                     Dato requerido.
                 </span>
-                <span class="text-danger" *ngIf="(FormReg.controls.Nombre.touched || submitted) 
-                       && (FormReg.controls.Nombre.errors?.minlength || FormReg.controls.Nombre.errors?.maxlength) ">
+                <span class="text-danger" *ngIf="(FormReg.controls.descripcion.touched || submitted) 
+                       && (FormReg.controls.descripcion.errors?.minlength || FormReg.controls.descripcion.errors?.maxlength) ">
                     Dato texto, 4 a 55 caracteres.
                 </span>
                 
