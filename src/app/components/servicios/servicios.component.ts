@@ -58,7 +58,7 @@ export class ServiciosComponent implements OnInit {
       Activo: [null]
     });
     this.FormReg = this.formBuilder.group({
-      IdArticulo: [0],
+      idservicio: [0],
       descripcion: [
         "",
         [Validators.required, Validators.minLength(4), Validators.maxLength(55)]
@@ -69,7 +69,7 @@ export class ServiciosComponent implements OnInit {
         "",
         [Validators.required, Validators.pattern("[0-9]{13}")]
       ],
-      IdArticuloFamilia: ["", [Validators.required]],
+      idservicioFamilia: ["", [Validators.required]],
       FechaAlta: [
         "",
         [
