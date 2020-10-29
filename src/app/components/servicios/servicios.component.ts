@@ -1,23 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ModalDialogService } from "../../services/modal-dialog.service";
-import { Articulo } from "../../models/articulo";
-import { ArticuloFamilia } from "../../models/articulo-familia";
-import { MockArticulosService } from "../../services/mock-articulos.service";
-import { MockArticulosFamiliasService } from "../../services/mock-articulos-familias.service";
-import { ArticulosService } from "../../services/articulos.service";
-import { ArticulosFamiliasService } from "../../services/articulos-familias.service";
-import { ServicioService } from "../../services/servicio.service"
+import { ServicioService } from "../../services/servicio.service";
 import { Servicio } from "../../models/servicio";
 
-
 @Component({
-  selector: 'app-servicios',
-  templateUrl: './servicios.component.html',
-  styleUrls: ['./servicios.component.css']
+  selector: "app-servicios",
+  templateUrl: "./servicios.component.html",
+  styleUrls: ["./servicios.component.css"]
 })
 export class ServiciosComponent implements OnInit {
-Titulo = "Articulos"; 
+  Titulo = "Articulos";
   TituloAccionABMC = {
     A: "(Agregar)",
     B: "(Eliminar)",
@@ -33,7 +26,7 @@ Titulo = "Articulos";
 
   Lista: Servicio[] = [];
   RegistrosTotal: number;
-  Familias: ArticuloFamilia[] = [];
+  // Familias: ArticuloFamilia[] = [];
   SinBusquedasRealizadas = true;
 
   Pagina = 1; // inicia pagina 1
@@ -51,11 +44,12 @@ Titulo = "Articulos";
 
   constructor(
     public formBuilder: FormBuilder,
-    private articulosService: MockArticulosService,
-    private articulosFamiliasService: MockArticulosFamiliasService,
+    //private articulosService: MockArticulosService,
+    //private articulosFamiliasService: MockArticulosFamiliasService,
     //private articulosService: ArticulosService,
     //private articulosFamiliasService: ArticulosFamiliasService,
-    private modalDialogService: ModalDialogService
+    private modalDialogService: ModalDialogService,
+    private servicioService: ServicioService
   ) {}
 
   ngOnInit() {
@@ -88,14 +82,14 @@ Titulo = "Articulos";
       Activo: [true]
     });
 
-    this.GetFamiliasArticulos();
+    // this.GetFamiliasArticulos();
   }
 
-  GetFamiliasArticulos() {
-    this.articulosFamiliasService.get().subscribe((res: ArticuloFamilia[]) => {
-      this.Familias = res;
-    });
-  }
+  //GetFamiliasArticulos() {
+  //this.articulosFamiliasService.get().subscribe((res: ArticuloFamilia[]) => {
+  // this.Familias = res;
+  //});
+  //}
 
   Agregar() {
     this.AccionABMC = "A";
@@ -108,52 +102,17 @@ Titulo = "Articulos";
   // Buscar segun los filtros, establecidos en FormReg
   Buscar() {
     this.SinBusquedasRealizadas = false;
-    this.articulosService
-      .get(this.FormFiltro.value.Nombre, this.FormFiltro.value.Activo, this.Pagina)
-      .subscribe((res: any) => {
-        this.Lista = res.Lista;
-        this.RegistrosTotal = res.RegistrosTotal;
-      });
-  }
-
-  // Obtengo un registro especifico según el Id
-  BuscarPorId(Dto, AccionABMC) {
-    window.scroll(0, 0); // ir al incio del scroll
-
-    this.articulosService.getById(Dto.IdArticulo).subscribe((res: any) => {
-      this.FormReg.patchValue(res);
-
-      //formatear fecha de  ISO 8061 a string dd/MM/yyyy
-      var arrFecha = res.FechaAlta.substr(0, 10).split("-");
-      this.FormReg.controls.FechaAlta.patchValue(
-        arrFecha[2] + "/" + arrFecha[1] + "/" + arrFecha[0]
-      );
-
-      this.AccionABMC = AccionABMC;
+    this.servicioService.get().subscribe((res: any) => {
+      this.Lista = res.Lista;
+      this.RegistrosTotal = res.RegistrosTotal;
     });
-  }
-
-  Consultar(Dto) {
-    this.BuscarPorId(Dto, "C");
-  }
-
-  // comienza la modificacion, luego la confirma con el metodo Grabar
-  Modificar(Dto) {
-    if (!Dto.Activo) {
-      this.modalDialogService.Alert('No puede modificarse un registro Inactivo.');
-      return;
-    }
-    this.submitted = false;
-    this.FormReg.markAsPristine();
-    this.FormReg.markAsUntouched();
-    this.BuscarPorId(Dto, "M");
   }
 
   // grabar tanto altas como modificaciones
   Grabar() {
     this.submitted = true;
     // verificar que los validadores esten OK
-     if (this.FormReg.invalid) {
+    if (this.FormReg.invalid) {
       return;
     }
 
@@ -163,51 +122,33 @@ Titulo = "Articulos";
     //convertir fecha de string dd/MM/yyyy a ISO para que la entienda webapi
     var arrFecha = itemCopy.FechaAlta.substr(0, 10).split("/");
     if (arrFecha.length == 3)
-      itemCopy.FechaAlta = 
-          new Date(
-            arrFecha[2],
-            arrFecha[1] - 1,
-            arrFecha[0]
-          ).toISOString();
+      itemCopy.FechaAlta = new Date(
+        arrFecha[2],
+        arrFecha[1] - 1,
+        arrFecha[0]
+      ).toISOString();
 
     // agregar post
     if (itemCopy.IdArticulo == 0 || itemCopy.IdArticulo == null) {
       itemCopy.IdArticulo = 0;
-      this.articulosService.post(itemCopy).subscribe((res: any) => {
+      this.servicioService.post(itemCopy).subscribe((res: any) => {
         this.Volver();
-        this.modalDialogService.Alert('Registro agregado correctamente.');
+        this.modalDialogService.Alert("Registro agregado correctamente.");
         this.Buscar();
       });
     } else {
       // modificar put
-      this.articulosService
-        .put(itemCopy.IdArticulo, itemCopy)
-        .subscribe((res: any) => {
-          this.Volver();
-          this.modalDialogService.Alert('Registro modificado correctamente.');
-          this.Buscar();
-        });
+      // this.articulosService
+      // .put(itemCopy.IdArticulo, itemCopy)
+      //.subscribe((res: any) => {
+      // this.Volver();
+      //this.modalDialogService.Alert('Registro modificado correctamente.');
+      //this.Buscar();
+      //});
     }
   }
 
-// representa la baja logica 
-  ActivarDesactivar(Dto) {
-    this.modalDialogService.Confirm(
-      "Esta seguro de " +
-        (Dto.Activo ? "desactivar" : "activar") +
-        " este registro?",
-      undefined,
-      undefined,
-      undefined,
-      () =>
-        this.articulosService  
-          .delete(Dto.IdArticulo)
-          .subscribe((res: any) => 
-            this.Buscar()
-          ),
-      null
-    );
-  }
+  // representa la baja logica
 
   // Volver desde Agregar/Modificar
   Volver() {
@@ -215,14 +156,14 @@ Titulo = "Articulos";
   }
 
   ImprimirListado() {
-    this.modalDialogService.Alert('Sin desarrollar...');
+    this.modalDialogService.Alert("Sin desarrollar...");
   }
 
-  GetArticuloFamiliaNombre(Id){
-    var ArticuloFamilia = this.Familias.filter(x => x.IdArticuloFamilia === Id)[0];
-    if (ArticuloFamilia)
-        return ArticuloFamilia.Nombre;
-    else
-      return "";
-  }
+  // GetArticuloFamiliaNombre(Id){
+  // var ArticuloFamilia = this.Familias.filter(x => x.IdArticuloFamilia === Id)[0];
+  //if (ArticuloFamilia)
+  //   return ArticuloFamilia.Nombre;
+  //else
+  // return "";
+  //}
 }
