@@ -38,23 +38,19 @@
 	<table class="table table-bordered table-striped">
 		<thead>
 			<tr>
-				<th class="text-center">Nombre</th>
-				<th class="text-center">Precio</th>
-				<th class="text-center">Stock</th>
-				<th class="text-center">Fecha de Alta</th>
-				<th>Familia</th>
-				<th class="text-center">Activo</th>
-				<th class="text-center text-nowrap">Acciones</th>
+				<th class="text-center">idservicio</th>
+				<th class="text-center">descripcion</th>
+				<th class="text-center">importe</th>
+				<th class="text-center">cantidadhoras</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr *ngFor="let dto of Lista">
-				<td>{{dto.Nombre | uppercase}}</td>
-        <td class="text-right">{{dto.Precio | currency:'$'}}</td>
-				<td class="text-right">{{dto.Stock}}</td>
-				<td>{{dto.FechaAlta| date:'dd/MM/yyyy'}}</td>
-				<td>{{GetArticuloFamiliaNombre(dto.IdArticuloFamilia)}}</td>
-				<td>{{dto.Activo ? 'SI' : 'NO'}}</td>
+				<td>{{dto.idservicio}</td>
+        <td class="text-right">{{dto.descripcion | uppercase}}</td>
+				<td class="text-right">{{dto.importe | currency:'$'}}</td>
+				<td>{{dto.cantidadhoras}</td>
+				
 				<td class="text-center text-nowrap">
 					<button type="button" class="btn btn-sm btn-outline-primary" title="Ver" (click)="Consultar(dto)">
                     <span class="fas fa-eye"></span>
