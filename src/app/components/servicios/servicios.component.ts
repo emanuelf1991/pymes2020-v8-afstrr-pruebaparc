@@ -33,9 +33,9 @@ export class ServiciosComponent implements OnInit {
 
   // opciones del combo activo
   OpcionesActivo = [
-    { Id: null, Nombre: "" },
-    { Id: true, Nombre: "SI" },
-    { Id: false, Nombre: "NO" }
+    { Id: null, descripcion: "" },
+    { Id: true, descripcion: "SI" },
+    { Id: false, descripcion: "NO" }
   ];
 
   FormFiltro: FormGroup;
@@ -54,7 +54,7 @@ export class ServiciosComponent implements OnInit {
 
   ngOnInit() {
     this.FormFiltro = this.formBuilder.group({
-      Nombre: [""],
+      descripcion: [""],
       Activo: [null]
     });
     this.FormReg = this.formBuilder.group({
