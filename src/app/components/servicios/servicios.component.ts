@@ -10,7 +10,7 @@ import { Servicio } from "../../models/servicio";
   styleUrls: ["./servicios.component.css"]
 })
 export class ServiciosComponent implements OnInit {
-  Titulo = "Articulos";
+  Titulo = "Servicios";
   TituloAccionABMC = {
     A: "(Agregar)",
     B: "(Eliminar)",
