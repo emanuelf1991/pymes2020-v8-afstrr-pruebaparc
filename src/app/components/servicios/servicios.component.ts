@@ -59,12 +59,12 @@ export class ServiciosComponent implements OnInit {
     });
     this.FormReg = this.formBuilder.group({
       IdArticulo: [0],
-      Nombre: [
+      descripcion: [
         "",
         [Validators.required, Validators.minLength(4), Validators.maxLength(55)]
       ],
-      Precio: [null, [Validators.required, Validators.pattern("[0-9]{1,7}")]],
-      Stock: [null, [Validators.required, Validators.pattern("[0-9]{1,7}")]],
+      importe: [null, [Validators.required, Validators.pattern("[0-9]{1,7}")]],
+      cantidadhoras: [null, [Validators.required, Validators.pattern("[0-9]{1,7}")]],
       CodigoDeBarra: [
         "",
         [Validators.required, Validators.pattern("[0-9]{13}")]
@@ -120,17 +120,17 @@ export class ServiciosComponent implements OnInit {
     const itemCopy = { ...this.FormReg.value };
 
     //convertir fecha de string dd/MM/yyyy a ISO para que la entienda webapi
-    var arrFecha = itemCopy.FechaAlta.substr(0, 10).split("/");
-    if (arrFecha.length == 3)
-      itemCopy.FechaAlta = new Date(
-        arrFecha[2],
-        arrFecha[1] - 1,
-        arrFecha[0]
-      ).toISOString();
+    // var arrFecha = itemCopy.FechaAlta.substr(0, 10).split("/");
+    // if (arrFecha.length == 3)
+    //   itemCopy.FechaAlta = new Date(
+    //     arrFecha[2],
+    //     arrFecha[1] - 1,
+    //     arrFecha[0]
+    //   ).toISOString();
 
     // agregar post
-    if (itemCopy.IdArticulo == 0 || itemCopy.IdArticulo == null) {
-      itemCopy.IdArticulo = 0;
+    if (itemCopy.idservicio == 0 || itemCopy.idservicio == null) {
+      itemCopy.idservicio = 0;
       this.servicioService.post(itemCopy).subscribe((res: any) => {
         this.Volver();
         this.modalDialogService.Alert("Registro agregado correctamente.");

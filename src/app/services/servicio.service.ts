@@ -22,16 +22,15 @@ export class ServicioService {
 
   get() {
     let params = new HttpParams();
-    
 
     return this.httpClient.get(this.resourceUrl, { params: params });
   }
 
   //getById(Id: number) {
-   // return this.httpClient.get(this.resourceUrl + Id);
+  // return this.httpClient.get(this.resourceUrl + Id);
   //}
 
-  post(obj:Servicio) {
+  post(obj: Servicio) {
     return this.httpClient.post(this.resourceUrl, obj);
   }
 
