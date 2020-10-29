@@ -50,19 +50,6 @@
         <td class="text-right">{{dto.descripcion | uppercase}}</td>
 				<td class="text-right">{{dto.importe | currency:'$'}}</td>
 				<td>{{dto.cantidadhoras}</td>
-				
-				<td class="text-center text-nowrap">
-					<button type="button" class="btn btn-sm btn-outline-primary" title="Ver" (click)="Consultar(dto)">
-                    <span class="fas fa-eye"></span>
-                </button>
-					<button type="button" class="btn btn-sm btn-outline-primary" title="Modificar" (click)="Modificar(dto)">
-                    <span class="fas fa-pencil-alt"></span>
-                </button>
-					<button type="button" class="btn btn-sm btn-outline-{{ dto.Activo ? 'danger':'success'}}"
-                    title="{{dto.Activo ? 'Desactivar':'Activar'}}" (click)="ActivarDesactivar(dto)">
-                    <span class="fas fa-{{dto.Activo ? 'times':'check'}}"></span>
-                </button>
-				</td>
 			</tr>
 		</tbody>
 	</table>
