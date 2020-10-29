@@ -7,6 +7,8 @@ import { MockArticulosService } from "../../services/mock-articulos.service";
 import { MockArticulosFamiliasService } from "../../services/mock-articulos-familias.service";
 import { ArticulosService } from "../../services/articulos.service";
 import { ArticulosFamiliasService } from "../../services/articulos-familias.service";
+import { ServicioService } from "../../services/servicio.service"
+import { Servicio } from "../../models/servicio";
 
 
 @Component({
@@ -29,7 +31,7 @@ Titulo = "Articulos";
     RD: " Revisar los datos ingresados..."
   };
 
-  Lista: Articulo[] = [];
+  Lista: Servicio[] = [];
   RegistrosTotal: number;
   Familias: ArticuloFamilia[] = [];
   SinBusquedasRealizadas = true;

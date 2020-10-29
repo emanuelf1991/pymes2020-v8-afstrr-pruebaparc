@@ -36,10 +36,10 @@ export class ServicioService {
   }
 
   //put(Id: number, obj:Articulo) {
-    //return this.httpClient.put(this.resourceUrl + Id, obj);
+  //return this.httpClient.put(this.resourceUrl + Id, obj);
   //}
 
-  delete(Id) {
-    return this.httpClient.delete(this.resourceUrl + Id);
-  }
+  //delete(Id) {
+  // return this.httpClient.delete(this.resourceUrl + Id);
+  //}
 }

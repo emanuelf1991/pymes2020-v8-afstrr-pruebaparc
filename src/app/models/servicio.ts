@@ -3,5 +3,4 @@ export class Servicio {
   descripcion: string;
   importe: number;
   cantidadhoras: number;
- 
 }
