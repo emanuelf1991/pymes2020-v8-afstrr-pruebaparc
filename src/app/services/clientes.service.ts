@@ -6,7 +6,7 @@ import {
   HttpParams
 } from "@angular/common/http";
 import { of } from "rxjs";
-import { Articulo } from "../models/articulo";
+import { Cliente } from "../models/cliente";
 
 @Injectable({
   providedIn: "root"
@@ -29,7 +29,7 @@ export class ClientesService {
   //   return this.httpClient.get(this.resourceUrl + Id);
   // }
 
-  post(obj: Articulo) {
+  post(obj: Cliente) {
     return this.httpClient.post(this.resourceUrl, obj);
   }
 
