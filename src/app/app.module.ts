@@ -22,6 +22,7 @@ import { ModalDialogComponent } from "./components/modal-dialog/modal-dialog.com
 import { ServiciosComponent } from './components/servicios/servicios.component';
 import { ServicioService } from './services/servicio.service';
 import { ClientesComponent } from './components/clientes/clientes.component';
+import { ClientesService } from './services/clientes.service';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,7 @@ import { ClientesComponent } from './components/clientes/clientes.component';
   entryComponents: [ModalDialogComponent],
   providers: [
      {provide: APP_BASE_HREF, useValue : '/' },
-    { provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true, providers: [ServicioService] }
+    { provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true, providers: [ServicioService], providers: [ClientesService] }
   ],
   bootstrap: [AppComponent]
 })

@@ -4,10 +4,10 @@ import { Articulo } from "../../models/articulo";
 import { ArticuloFamilia } from "../../models/articulo-familia";
 import { MockArticulosService } from "../../services/mock-articulos.service";
 import { MockArticulosFamiliasService } from "../../services/mock-articulos-familias.service";
-import { ArticulosService } from "../../services/articulos.service";
-import { ArticulosFamiliasService } from "../../services/articulos-familias.service";
+
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ModalDialogService } from "../../services/modal-dialog.service";
+import { ClientesService} from "../../services/clientes.service"
 
 @Component({
   selector: 'app-clientes',
@@ -15,7 +15,7 @@ import { ModalDialogService } from "../../services/modal-dialog.service";
   styleUrls: ['./clientes.component.css']
 })
 export class ClientesComponent implements OnInit {
-  Titulo = "Articulos"; 
+  Titulo = "Clientes"; 
   TituloAccionABMC = {
     A: "(Agregar)",
     B: "(Eliminar)",
