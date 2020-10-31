@@ -1,36 +1,34 @@
 import { Injectable } from "@angular/core";
-import {
-  HttpClient,
-  HttpHeaders,
-  HttpErrorResponse,
-  HttpParams
-} from "@angular/common/http";
+
+import {HttpClient} from "@angular/common/http";
 import { of } from "rxjs";
+import {Observable} from "rxjs";
 import { Cliente } from "../models/cliente";
 
 @Injectable({
   providedIn: "root"
 })
 export class ClientesService {
-  resourceUrl: string;
+  private clientesUrl = 'https://demo3151356.mockable.io/clientes/';
+  //resourceUrl: string;
   constructor(private httpClient: HttpClient) {
-    // la barra al final del resourse url es importante para los metodos que concatenan el id del recurso (GetById, Put)
-    //this.resourceUrl = "https://pavii.ddns.net/api/articulos/";
-    this.resourceUrl = "http://demo3151356.mockable.io/clientes";
+  //this.resourceUrl = "http://demo3151356.mockable.io/clientes/";
   }
 
-  get() {
-    let params = new HttpParams();
+  getClientes(): Observable<Cliente[]>{return this.httpClient.get<Cliente[]>(this.clientesUrl)};
 
-    return this.httpClient.get(this.resourceUrl, { params: params });
-  }
+  // get() {
+  //   let params = new HttpParams();
+
+  //   return this.httpClient.get(this.clientesUrl, { params: params });
+  // }
 
   // getById(Id: number) {
   //   return this.httpClient.get(this.resourceUrl + Id);
   // }
 
   post(obj: Cliente) {
-    return this.httpClient.post(this.resourceUrl, obj);
+    return this.httpClient.post(this.clientesUrl, obj);
   }
 
   // put(Id: number, obj:Articulo) {
