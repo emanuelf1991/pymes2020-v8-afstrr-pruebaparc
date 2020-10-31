@@ -107,7 +107,7 @@ export class ClientesComponent implements OnInit {
        // this.Lista = res.Lista;
         //this.RegistrosTotal = res.RegistrosTotal;
       //});
-  }
+  //}
 
   // Obtengo un registro especifico según el Id
   // BuscarPorId(Dto, AccionABMC) {
