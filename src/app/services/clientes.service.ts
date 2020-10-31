@@ -20,14 +20,16 @@ export class ClientesService {
   }
 
   get() {
-    return this.httpClient.get(this.resourceUrl);
+    let params = new HttpParams();
+
+    return this.httpClient.get(this.resourceUrl, { params: params });
   }
 
   // getById(Id: number) {
   //   return this.httpClient.get(this.resourceUrl + Id);
   // }
 
-  post(obj:Articulo) {
+  post(obj: Articulo) {
     return this.httpClient.post(this.resourceUrl, obj);
   }
 
