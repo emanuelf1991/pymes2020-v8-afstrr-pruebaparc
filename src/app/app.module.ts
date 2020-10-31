@@ -21,6 +21,7 @@ import { ArticulosFamiliasComponent } from "./components/articulos-familias/arti
 import { ModalDialogComponent } from "./components/modal-dialog/modal-dialog.component";
 import { ServiciosComponent } from './components/servicios/servicios.component';
 import { ServicioService } from './services/servicio.service';
+import { ClientesComponent } from './components/clientes/clientes.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ServicioService } from './services/servicio.service';
     ArticulosFamiliasComponent,
     ModalDialogComponent,
     ServiciosComponent,
+    ClientesComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +43,7 @@ import { ServicioService } from './services/servicio.service';
       { path: 'inicio', component: InicioComponent },
       { path: 'servicios', component: ServiciosComponent },
       { path: 'articulos', component: ArticulosComponent },
+      { path: 'clientes', component: ClientesComponent },
       { path: 'articulosfamilias', component: ArticulosFamiliasComponent }
     ]),
     NgbPaginationModule,
