@@ -11,11 +11,12 @@ import { Cliente } from "../models/cliente";
 export class ClientesService {
   private clientesUrl = 'https://demo3151356.mockable.io/clientes/';
   //resourceUrl: string;
-  constructor(private httpClient: HttpClient) {
+  constructor(private http: HttpClient) {
   //this.resourceUrl = "http://demo3151356.mockable.io/clientes/";
   }
 
-  getClientes(): Observable<Cliente[]>{return this.httpClient.get<Cliente[]>(this.clientesUrl)};
+  getClientes(): Observable<Cliente[]>
+                {return this.http.get<Cliente[]>(this.clientesUrl)};
 
   // get() {
   //   let params = new HttpParams();
@@ -28,7 +29,7 @@ export class ClientesService {
   // }
 
   post(obj: Cliente) {
-    return this.httpClient.post(this.clientesUrl, obj);
+    return this.http.post(this.clientesUrl, obj);
   }
 
   // put(Id: number, obj:Articulo) {
