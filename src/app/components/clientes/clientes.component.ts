@@ -103,10 +103,10 @@ export class ClientesComponent implements OnInit {
   // Buscar segun los filtros, establecidos en FormReg
   Buscar() {
     this.SinBusquedasRealizadas = false;
-    this.clientesService.get()//.subscribe((res: any) => {
+    this.clientesService.get()}//.subscribe((res: any) => {
        // this.Lista = res.Lista;
         //this.RegistrosTotal = res.RegistrosTotal;
-      });
+      //});
   }
 
   // Obtengo un registro especifico según el Id
