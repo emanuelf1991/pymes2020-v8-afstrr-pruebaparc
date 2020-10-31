@@ -104,8 +104,8 @@ export class ClientesComponent implements OnInit {
   Buscar() {
     this.SinBusquedasRealizadas = false;
     this.clientesService.get().subscribe((res: any) => {
-        this.Lista = res.Lista;
-        this.RegistrosTotal = res.RegistrosTotal;
+       // this.Lista = res.Lista;
+        //this.RegistrosTotal = res.RegistrosTotal;
       });
   }
 
