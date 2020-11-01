@@ -29,6 +29,7 @@ export class ClientesComponent implements OnInit {
     RD: " Revisar los datos ingresados..."
   };
   Cliente : ICliente[] = [];
+  mensajeError : "no se por que no anda";
   Lista: Cliente[] = [];
   RegistrosTotal: number;
   //Familias: ArticuloFamilia[] = [];
@@ -112,7 +113,8 @@ export class ClientesComponent implements OnInit {
   Buscar() {
     this.SinBusquedasRealizadas = false;
     this.clientesService.getClientes().subscribe({
-      next: Cliente => this.Cliente = Cliente
+      next: Cliente => this.Cliente = Cliente,
+      error: err => this.mensajeError = err
     });
     // this.clientesService.get().subscribe((res: any) => {
     //   this.Lista = res.Lista;
