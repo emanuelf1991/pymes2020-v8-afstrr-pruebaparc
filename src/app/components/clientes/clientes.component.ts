@@ -57,17 +57,17 @@ export class ClientesComponent implements OnInit {
 
   ngOnInit() {
     
-    //this.FormFiltro = this.formBuilder.group({
-     // Nombre: [""],
-     // Activo: [null]
-    //});
+    this.FormFiltro = this.formBuilder.group({
+      Nombre: [""],
+      Activo: [null]
+    });
     this.FormReg = this.formBuilder.group({
       IdCliente: [0],
       Nombre: [
         "",
         [Validators.required, Validators.minLength(4), Validators.maxLength(55)]
       ],
-      NumeroDocumento: [null, [Validators.required, Validators.pattern("[0-9]{1,7}")]],
+      NumeroDocumento: [null, [Validators.required, Validators.pattern("[0-9]{1,10}")]],
       // Stock: [null, [Validators.required, Validators.pattern("[0-9]{1,7}")]],
       // CodigoDeBarra: [
       //   "",
@@ -95,13 +95,13 @@ export class ClientesComponent implements OnInit {
   //   });
   // }
 
-  // Agregar() {
-  //   this.AccionABMC = "A";
-  //   this.FormReg.reset();
-  //   this.submitted = false;
-  //   //this.FormReg.markAsPristine();
-  //   this.FormReg.markAsUntouched();
-  // }
+   Agregar() {
+     this.AccionABMC = "A";
+     this.FormReg.reset();
+     this.submitted = false;
+     this.FormReg.markAsPristine();
+    this.FormReg.markAsUntouched();
+   }
 
   // Buscar segun los filtros, establecidos en FormReg
   Buscar() {
