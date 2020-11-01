@@ -106,14 +106,13 @@ export class ClientesComponent implements OnInit {
   }
 
   // Buscar segun los filtros, establecidos en FormReg
-  Buscar(){
-       this.clientesService.getClientes().subscribe({
-           next: clientes => this.clientes = clientes
-           //error: err => this.mensajeError = err
-       });
-   
-
-  } 
+  Buscar() {
+    this.SinBusquedasRealizadas = false;
+    this.clientesService.get().subscribe((res: any) => {
+      this.Lista = res.Lista;
+      this.RegistrosTotal = res.RegistrosTotal;
+    });
+  }
   
   //{
   //  this.SinBusquedasRealizadas = false;

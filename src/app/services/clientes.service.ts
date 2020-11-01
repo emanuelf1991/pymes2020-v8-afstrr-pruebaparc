@@ -1,42 +1,43 @@
 import { Injectable } from "@angular/core";
-
-import {HttpClient} from "@angular/common/http";
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpErrorResponse,
+  HttpParams
+} from "@angular/common/http";
 import { of } from "rxjs";
-import {Observable} from "rxjs";
-import { Cliente } from "../models/cliente";
+import { Servicio } from "../models/servicio";
 
 @Injectable({
   providedIn: "root"
 })
 export class ClientesService {
-  private clientesUrl = 'https://demo3151356.mockable.io/clientes/';
-  //resourceUrl: string;
-  constructor(private http: HttpClient) {
-  //this.resourceUrl = "http://demo3151356.mockable.io/clientes/";
+  resourceUrl: string;
+  constructor(private httpClient: HttpClient) {
+    // la barra al final del resourse url es importante para los metodos que concatenan el id del recurso (GetById, Put)
+    //this.resourceUrl = "https://pavii.ddns.net/api/articulos/";
+    this.resourceUrl = "https://demo3151356.mockable.io/clientes/";
   }
 
-  getClientes(): Observable<Cliente[]>
-                {return this.http.get<Cliente[]>(this.clientesUrl)};
+  get() {
+    let params = new HttpParams();
 
-  // get() {
-  //   let params = new HttpParams();
-
-  //   return this.httpClient.get(this.clientesUrl, { params: params });
-  // }
-
-  // getById(Id: number) {
-  //   return this.httpClient.get(this.resourceUrl + Id);
-  // }
-
-  post(obj: Cliente) {
-    return this.http.post(this.clientesUrl, obj);
+    return this.httpClient.get(this.resourceUrl, { params: params });
   }
 
-  // put(Id: number, obj:Articulo) {
-  //   return this.httpClient.put(this.resourceUrl + Id, obj);
-  // }
+  //getById(Id: number) {
+  // return this.httpClient.get(this.resourceUrl + Id);
+  //}
 
-  // delete(Id) {
-  //   return this.httpClient.delete(this.resourceUrl + Id);
-  // }
+  post(obj: Servicio) {
+    return this.httpClient.post(this.resourceUrl, obj);
+  }
+
+  //put(Id: number, obj:Articulo) {
+  //return this.httpClient.put(this.resourceUrl + Id, obj);
+  //}
+
+  //delete(Id) {
+  // return this.httpClient.delete(this.resourceUrl + Id);
+  //}
 }
