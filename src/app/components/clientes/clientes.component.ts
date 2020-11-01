@@ -1,9 +1,11 @@
 
+
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from "../../models/cliente";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ModalDialogService } from "../../services/modal-dialog.service";
 import { ClientesService} from "../../services/clientes.service";
+
 
 
 @Component({
@@ -51,7 +53,9 @@ export class ClientesComponent implements OnInit {
     private clientesService: ClientesService,
     //private articulosService: ArticulosService,
     //private articulosFamiliasService: ArticulosFamiliasService,
-    private modalDialogService: ModalDialogService
+    private modalDialogService: ModalDialogService,
+
+
   ) {}
 
 
@@ -111,6 +115,9 @@ export class ClientesComponent implements OnInit {
       this.RegistrosTotal = res.RegistrosTotal;
     });
   }
+
+
+
   
   //{
   //  this.SinBusquedasRealizadas = false;
