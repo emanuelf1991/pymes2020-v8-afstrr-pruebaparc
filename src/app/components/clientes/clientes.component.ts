@@ -73,7 +73,7 @@ export class ClientesComponent implements OnInit {
         "",
         [Validators.required, Validators.pattern("[0-9]{13}")]
       ],
-      IdArticuloFamilia: ["", [Validators.required]],
+      //IdArticuloFamilia: ["", [Validators.required]],
       FechaAlta: [
         "",
         [
