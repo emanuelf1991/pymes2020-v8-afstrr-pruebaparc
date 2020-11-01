@@ -4,8 +4,7 @@ import { Cliente } from "../../models/cliente";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ModalDialogService } from "../../services/modal-dialog.service";
 import { ClientesService} from "../../services/clientes.service";
-import { Observable } from "rxjs";
-import {HttpClient} from "@angular/common/http"
+
 
 @Component({
   selector: 'app-clientes',
@@ -55,14 +54,13 @@ export class ClientesComponent implements OnInit {
     private modalDialogService: ModalDialogService
   ) {}
 
-  clientes: Cliente[] = [];
 
   ngOnInit() {
     
-    this.FormFiltro = this.formBuilder.group({
-      Nombre: [""],
-      Activo: [null]
-    });
+    //this.FormFiltro = this.formBuilder.group({
+     // Nombre: [""],
+     // Activo: [null]
+    //});
     this.FormReg = this.formBuilder.group({
       IdCliente: [0],
       Nombre: [
