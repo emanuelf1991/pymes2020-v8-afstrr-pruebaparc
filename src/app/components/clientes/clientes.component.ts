@@ -5,6 +5,7 @@ import { Cliente } from "../../models/cliente";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ModalDialogService } from "../../services/modal-dialog.service";
 import { ClientesService} from "../../services/clientes.service";
+import { ICliente } from "../../models/icliente";
 
 
 
@@ -27,7 +28,7 @@ export class ClientesComponent implements OnInit {
     SD: " No se encontraron registros...",
     RD: " Revisar los datos ingresados..."
   };
-
+  Cliente : ICliente[];
   Lista: Cliente[] = [];
   RegistrosTotal: number;
   //Familias: ArticuloFamilia[] = [];
@@ -110,10 +111,13 @@ export class ClientesComponent implements OnInit {
   // Buscar segun los filtros, establecidos en FormReg
   Buscar() {
     this.SinBusquedasRealizadas = false;
-    this.clientesService.get().subscribe((res: any) => {
-      this.Lista = res.Lista;
-      this.RegistrosTotal = res.RegistrosTotal;
+    this.clientesService.getClientes().subscribe({
+      next: Cliente => this.Cliente = Cliente
     });
+    // this.clientesService.get().subscribe((res: any) => {
+    //   this.Lista = res.Lista;
+    //   this.RegistrosTotal = res.RegistrosTotal;
+    //});
   }
 
 
