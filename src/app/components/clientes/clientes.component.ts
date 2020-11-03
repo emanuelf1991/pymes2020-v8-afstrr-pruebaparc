@@ -28,7 +28,7 @@ export class ClientesComponent implements OnInit {
     SD: " No se encontraron registros...",
     RD: " Revisar los datos ingresados..."
   };
-  Cliente : ICliente[] = [];
+  Cliente : Cliente[] = [];
   mensajeError : "no se por que no anda";
   Lista: Cliente[] = [];
   RegistrosTotal: number;
