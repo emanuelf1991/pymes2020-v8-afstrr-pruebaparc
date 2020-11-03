@@ -38,7 +38,7 @@ export class ClientesComponent implements OnInit {
   Pagina = 1; // inicia pagina 1
 
   // opciones del combo activo
-  OpcionesActivo = [
+  OpcionesTrabajo = [
     { Id: null, Nombre: "" },
     { Id: true, Nombre: "SI" },
     { Id: false, Nombre: "NO" }
