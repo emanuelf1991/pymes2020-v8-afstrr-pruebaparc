@@ -74,6 +74,7 @@ export class ClientesComponent implements OnInit {
         [Validators.required, Validators.minLength(4), Validators.maxLength(55)]
       ],
       NumeroDocumento: [null, [Validators.required, Validators.pattern("[0-9]{1,10}")]],
+      TieneTrabajo: [null],
       // Stock: [null, [Validators.required, Validators.pattern("[0-9]{1,7}")]],
       // CodigoDeBarra: [
       //   "",
@@ -113,7 +114,7 @@ export class ClientesComponent implements OnInit {
   Buscar() {
     this.SinBusquedasRealizadas = false;
     this.clientesService.getClientes().subscribe({
-      next: Cliente =>{ this.Cliente = Cliente; console.log(this.Cliente) },
+      next: Cliente =>{ this.Cliente = Cliente},
       error: err => this.mensajeError = err
     });
     // this.clientesService.get().subscribe((res: any) => {
