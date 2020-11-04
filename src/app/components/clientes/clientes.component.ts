@@ -113,7 +113,7 @@ export class ClientesComponent implements OnInit {
   Buscar() {
     this.SinBusquedasRealizadas = false;
     this.clientesService.getClientes().subscribe({
-      next: Cliente => this.Cliente = Cliente,
+      next: Cliente =>{ this.Cliente = Cliente; console.log(this.Cliente) },
       error: err => this.mensajeError = err
     });
     // this.clientesService.get().subscribe((res: any) => {

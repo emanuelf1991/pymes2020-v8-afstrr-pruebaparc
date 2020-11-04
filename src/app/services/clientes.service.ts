@@ -14,7 +14,7 @@ import { ICliente} from "../models/icliente";
   providedIn: "root"
 })
 export class ClientesService {
-  private resourceUrl ="https://demo3151356.mockable.io/clientes/";
+  private resourceUrl ="https://demo3151356.mockable.io/clientes";
   constructor(private http: HttpClient) {}
 
   getClientes(): Observable<ICliente[]>{

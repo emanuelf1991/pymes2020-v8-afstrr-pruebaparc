@@ -1,7 +1,7 @@
 <h3>{{Titulo}} <small>{{TituloAccionABMC[AccionABMC]}}</small></h3>
 
 <!-- Formulario Filtro de busqueda, se ve cuando la accion es Listado(busqueda/listado)-->
-<form name="FormFiltro" [formGroup]='FormFiltro' class="bg-light" *ngIf="AccionABMC == 'L'" >
+<!-- <form name="FormFiltro" [formGroup]='FormFiltro' class="bg-light" *ngIf="AccionABMC == 'L'" > -->
 	<!-- <div class="form-group row">
 		<label class="col-form-label col-sm-2 col-sm-offset-1">
             Nombre:
@@ -31,7 +31,7 @@
             Agregar
         </button>
 		</div>
-</form>
+<!-- </form> -->
 
 <!-- Tabla de resutados de busqueda y Paginador-->
 <div id="divTablaResultados" *ngIf="AccionABMC == 'L' && Cliente?.length > 0">
